@@ -6,15 +6,13 @@ import 'businfo_data.dart';
 class BusInfoController {
   final Dio _dio = Dio();
 
-
-  Future<List<busInfo>> fetchBusInfo(WidgetRef   ref) async {
+  Future<void> fetchBusInfo(WidgetRef ref) async {
     try {
+      final String url =
+          'http://apis.data.go.kr/1613000/BusRoutespecificStopInformation/getBusRoutespecificStopInformation';
 
-      final String url = 'http://apis.data.go.kr/1613000/BusRoutespecificStopInformation/getBusRoutespecificStopInformation';
-
-
-      final String serviceKey = 'Hmyyh9ZiYNt4vOZZdasLtsfACBE+bL/+2PevBXn00OmYRdYQUZsHzJt+Lup4p4MK3m4HnRlV8Sy043CoDzm7Lg==';
-
+      final String serviceKey =
+          'Hmyyh9ZiYNt4vOZZdasLtsfACBE+bL/+2PevBXn00OmYRdYQUZsHzJt+Lup4p4MK3m4HnRlV8Sy043CoDzm7Lg==';
 
       final queryParameters = {
         'serviceKey': serviceKey,
@@ -27,9 +25,7 @@ class BusInfoController {
         'dataType': 'JSON',
       };
 
-
       final response = await _dio.get(url, queryParameters: queryParameters);
-
 
       if (response.statusCode == 200) {
         final jsonData = response.data;
@@ -53,14 +49,11 @@ class BusInfoController {
           infoList.add(businfo);
         }
         ref.read(busInfoProvider.notifier).state = infoList;
-        return infoList;
       } else {
         print('Error: ${response.statusCode}');
-        return [];
       }
     } catch (e) {
       print('Error occurred: $e');
-      return [];
     }
   }
 }
