@@ -68,7 +68,7 @@ class BusApiService {
         }
         print("🔹 API 응답 데이터:");
         print(response.data);
-        ref.read(busInfoProvider.notifier).state = infoList;
+        ref.read(busInfolistProvider.notifier).state = infoList;
         return infoList;
       } else {
         print("❌ 오류 발생: ${response.statusCode}");
@@ -81,7 +81,7 @@ class BusApiService {
   }
 }
 
-final busInfoProvider = StateProvider<List<Businfo>> ((ref)=> []);
+final busInfolistProvider = StateProvider<List<Businfo>> ((ref)=> []);
 
 class Businfo {
   final String vehId;

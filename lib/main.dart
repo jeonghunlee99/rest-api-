@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'air_quality_controller.dart';
-import 'air_quality_data.dart';
-import 'bus.dart';
-import 'businfo.dart';
+import 'airqualitypage/air_quality_controller.dart';
+import 'airqualitypage/air_quality_data.dart';
+
+import 'businfo/busifno_screen.dart';
+
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
