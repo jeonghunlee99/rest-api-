@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'air_quality_controller.dart';
 import 'air_quality_data.dart';
 import 'bus.dart';
+import 'businfo.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
@@ -42,7 +43,7 @@ class AirQualityScreen extends ConsumerWidget {
               // BusLocationScreen 페이지로 이동
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => BusPage()),
+                MaterialPageRoute(builder: (context) => BusInfoPage()),
               );
             },
             child: Text("페이지 이동"),
